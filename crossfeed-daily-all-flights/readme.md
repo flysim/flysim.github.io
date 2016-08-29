@@ -3,6 +3,7 @@
 <input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/crossfeed-daily-all-flights'; 
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' >
 
+[flySim]( https://flysim.github.io/ ) &raquo;
 
 [Crossfeed Daily All Flights Read Me]( https://flysim.github.io/crossfeed-daily-all-flights/#readme.md )
 ===
