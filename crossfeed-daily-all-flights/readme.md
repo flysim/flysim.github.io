@@ -12,6 +12,15 @@ value='You are now in a GitHub web page view - Click this button to view this re
 * Displays flights for an entire day in one fell swoop
 
 
+## Questions
+
+* Which is the nicest overlay globe to start off with?
+	* Or shousl a random selection appear each visit
+* What should the colors of the flight paths indicate?
+	* Callsign?
+	* Departure time?
+
+
 ## Issues
 
 * Current days flights not deleted when you select a new day
