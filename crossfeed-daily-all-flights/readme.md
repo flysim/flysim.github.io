@@ -1,10 +1,10 @@
 <span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]
-( http://flysim.github.io/crossfeed-daily-all-flights/#readme.md "View file as a web page." ) </span>
+( https://flysim.github.io/crossfeed-daily-all-flights/#readme.md "View file as a web page." ) </span>
 <input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/crossfeed-daily-all-flights'; 
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' >
 
 
-[Crossfeed Daily All Flights Read Me]( http://flysim.github.io/crossfeed-daily-all-flights/#readme.md )
+[Crossfeed Daily All Flights Read Me]( https://flysim.github.io/crossfeed-daily-all-flights/#readme.md )
 ===
 
 ## Features

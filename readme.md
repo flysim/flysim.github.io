@@ -1,10 +1,10 @@
 <span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]
-( http://flysim.github.io/#readme.md "View file as a web page." ) </span>
+( https://flysim.github.io/#readme.md "View file as a web page." ) </span>
 <input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/'; 
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' >
 
 
-[flySim Read Me]( http://flysim.github.io/#readme.md )
+[flySim Read Me]( https://flysim.github.io/#readme.md )
 ===
 ## Mission
 
@@ -14,12 +14,12 @@ A place for:
 * Having a supportive group of peeps that produce cool updates in a timely manner
 * Designing tools coded and created by the group that do things like help with housekeeping, promotion and communication. 
 
-##first script: [Crossfeed Daily All Flights]( http://flysim.github.io/crossfeed-daily-all-flights/ )
+##first script: [Crossfeed Daily All Flights]( https://flysim.github.io/crossfeed-daily-all-flights/ )
 
 <img src="" style=display:none; width=800 >
 
 
-<iframe src=http://flysim.github.io/crossfeed-daily-all-flights/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
+<iframe src=https://flysim.github.io/crossfeed-daily-all-flights/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
 
 
 _Crossfeed Daily All Flights_
