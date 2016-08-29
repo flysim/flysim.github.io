@@ -6,9 +6,23 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 [flySim Read Me]( http://flysim.github.io/#readme.md )
 ===
+## Mission
+
+A place for:
+
+* Being able to create, edit fly and replay things in 3D in your browser - all FOSS.
+* Having a supportive group of peeps that produce cool updates in a timely manner
+* Designing tools coded and created by the group that do things like help with housekeeping, promotion and communication. 
+
+##first script: [Crossfeed Daily All Flights]( http://flysim.github.io/crossfeed-daily-all-flights/ )
+
+<img src="" style=display:none; width=800 >
 
 
-##[Crossfeed Daily All Flights]( flysim.github.io/crossfeed-daily-all-flights/ )
+<iframe src=http://flysim.github.io/crossfeed-daily-all-flights/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
+
+
+_Crossfeed Daily All Flights_
 
 ## Change Log
 
