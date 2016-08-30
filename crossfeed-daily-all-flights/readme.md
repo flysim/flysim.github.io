@@ -8,6 +8,11 @@ value='You are now in a GitHub web page view - Click this button to view this re
 [Crossfeed Daily All Flights Read Me]( https://flysim.github.io/crossfeed-daily-all-flights/#readme.md )
 ===
 
+## full screen: [Crossfeed Daily All Flights R3]( https://flysim.github.io/crossfeed-daily-all-flights/ )
+
+## full screen: [Crossfeed Daily All Flights R2]( https://flysim.github.io/crossfeed-daily-all-flights/crossfeed-daily-all-flights-r2.html )
+* With wide lines
+
 ## Features
 
 * Displays flights for an entire day in one fell swoop
@@ -21,14 +26,28 @@ value='You are now in a GitHub web page view - Click this button to view this re
 	* Callsign?
 	* Departure time?
 * When you click or mouseover a flightpath what should happen?
-
+* What stats to show
+	* Start and end times of flights
+	* Name of city via Google geocoding?
 
 ## Issues
 
-* Current days flights not deleted when you select a new day
+
 
 
 ## Change Log
+
+### 2016-08-29 ~ R2/ R3
+
+
+* Added mesh-lines / lines with width
+	* Then took away because they were not detectable by raycaster
+	* See R2
+* Add limited ability to flight on a flight and gets limited stats
+	* More stats to be added
+	* See R3
+* Added blue sky
+* Fixed: Current days flights not deleted when you select a new day
 
 ### 2016-08-28
 
