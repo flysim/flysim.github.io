@@ -1,4 +1,6 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]
+<span style=display:none; >[You are now in a GitHub so
+
+urce code view - click this link to view Read Me file as a web page]
 ( https://flysim.github.io/crossfeed-daily-all-flights/#readme.md "View file as a web page." ) </span>
 <input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/crossfeed-daily-all-flights'; 
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' >
@@ -8,14 +10,16 @@ value='You are now in a GitHub web page view - Click this button to view this re
 [Crossfeed Daily All Flights Read Me]( https://flysim.github.io/crossfeed-daily-all-flights/#readme.md )
 ===
 
-## full screen: [Crossfeed Daily All Flights R3]( https://flysim.github.io/crossfeed-daily-all-flights/ )
+## full screen: [Crossfeed Daily All Flights]( https://flysim.github.io/crossfeed-daily-all-flights/ )
 
-## full screen: [Crossfeed Daily All Flights R2]( https://flysim.github.io/crossfeed-daily-all-flights/crossfeed-daily-all-flights-r2.html )
-* With wide lines
 
 ## Features
 
 * Displays flights for an entire day in one fell swoop
+
+## Thanks
+
+* Data courtesy [FGx Crossfeed Dailies]( https://github.com/fgx/crossfeed-dailies )
 
 
 ## Questions
@@ -32,7 +36,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 ## Issues
 
-
+* better placement of placars
 
 
 ## Change Log
