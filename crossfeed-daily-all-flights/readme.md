@@ -25,12 +25,16 @@ value='You are now in a GitHub web page view - Click this button to view this re
 * Which is the nicest overlay globe to start off with?
 	* Or should a random selection appear each visit
 * What should the colors of the flight paths indicate?
+	* Or the colors of the placards
 	* Callsign?
 	* Departure time?
 * When you click or mouseover a flightpath what should happen?
 * What stats to show
 	* Start and end times of flights
 	* Name of city via Google geocoding?
+* What should happen in the call signs menu?
+* What should happen in the models menu?
+
 
 ## Issues
 
