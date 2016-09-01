@@ -37,8 +37,16 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 ## Change Log
 
-### 2016-08-29 ~ R2/ R3
+### 2016-09-01 ~ R4
 
+* Add placards
+* Add back mesh lines
+* Add list of models to menu
+* Add list of call signs to menu
+* Add interaction with placards instead of lines
+* And, wow, big update and big code get messy
+
+### 2016-08-29 ~ R2/ R3
 
 * Added mesh-lines / lines with width
 	* Then took away because they were not detectable by raycaster

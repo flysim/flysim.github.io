@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang=en >
+<head>
+<meta charset=utf-8 >
+<title>Crossfeed Daily All Flights R4</title>
+<meta name=viewport content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' >
+<meta name=description content='Display a golbe in 3D' >
+<meta name=keywords content='WebGL,Three.js,JavaScript,GitHub,FOSS,3D,STEM' >
+<meta name=date content='2016-08-28' >
+</head>
+<body>
+<!--
+<script src=https://mrdoob.github.io/three.js/build/three.min.js ></script>
+<script src=https://mrdoob.github.io/three.js/examples/js/controls/OrbitControls.js ></script>
+<script src=https://mrdoob.github.io/three.js/examples/js/libs/stats.min.js ></script>
+-->
+<script src=https://rawgit.com/mrdoob/three.js/dev/build/three.min.js ></script>
+<script src=https://rawgit.com/mrdoob/three.js/dev/examples/js/controls/OrbitControls.js ></script>
+<script src=https://rawgit.com/mrdoob/three.js/dev/examples/js/libs/stats.min.js ></script>
+
+<script src=https://rawgit.com/spite/THREE.MeshLine/master/src/THREE.MeshLine.js ></script>
+<script src=earth-globe-displacement-r2.js ></script>
+<script src=get-mesh-lines-intersection-r1.js ></script>
+
+<script>
+
+console.time( 'timer 0' );
+
+	var urlAPITreeContents = 'https://api.github.com/repos/fgx/crossfeed-dailies/git/trees/gh-pages?recursive=1';
+
+	var baseURL = 'https://fgx.github.io/crossfeed-dailies/';
+
+	var searchInFolder = './';
+
+	var flights;
+	var radius = 6371;
+
+	var placards = [];
+
+	var pi = Math.PI, pi05 = pi * 0.5, pi2 = pi + pi;
+	var d2r = pi / 180, r2d = 180 / pi;  // degrees / radians
+	var v = function ( x, y, z ){ return new THREE.Vector3( x, y, z ); };
+
+	var stats, renderer, scene, camera, controls, mesh;
+	var axisHelper, ambientLight, drawSeaLevel;
+
+	init();
+	animate();
+
+	function init() {
+
+		var css, hamburger, menu;
+		var geometry, material;
+		var gridHelper, axisHelper;
+
+		var txt = '<p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>';
+
+		css = document.head.appendChild( document.createElement( 'style' ) );
+		css.innerHTML =
+
+			'body { font: 12pt monospace; margin: 0; overflow: hidden; }' +
+			'a { color: crimson; text-decoration: none; }' +
+
+			'button, input[type=button] { background-color: #ccc; border: 2px #fff solid; color: #322; }' +
+
+			'input[type=range] { -webkit-appearance: none; -moz-appearance: none; background-color: #ddd; width: 160px; }' +
+			'input[type=range]::-moz-range-thumb { background-color: #888; border-radius: 0; width: 10px; }' +
+			'input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; background-color: #888; height: 20px; width: 10px; }' +
+
+			'summary { outline: none; }' +
+			'summary h3 { display:inline; }' +
+
+			'.popUp { background-color: white; left: 150px; border: 1px solid red; opacity: 1.0; padding: 5px; position: absolute; width: 120px; z-index: 10; }' +
+
+			'#bars { color: crimson; cursor: pointer; font-size: 24pt; text-decoration: none; }' +
+
+			'#container { left: 0; position: absolute; transition: left 1s; }' +
+
+			'#hamburger { background-color: #eee; left: 325px; position: absolute; top: 20px; }' +
+
+			'#menu { background-color: #eee; border: 1px #ccc solid; max-height: ' + window.innerHeight + 'px; overflow: auto; padding: 0 10px; position: absolute; width: 300px; }' +
+			'#menu h2 { margin: 0; }' +
+
+		'';
+
+		container = document.body.appendChild( document.createElement( 'div' ) );
+		container.id = 'container';
+		container.innerHTML =
+
+			'<div id=menu >' +
+
+				'<h2>' +
+					'<a href=http://flysim.github.io title="Jaanga - your flying happy place" > &#x2766 </a><br>' +
+					'<a href="" title="Click here to refresh this page" >' + document.title + '</a>' +
+					' ~ <a href=index.html#readme.md onmouseover=popHelp.style.display=""; onmouseout=popHelp.style.display="none"; > &#x24D8; </a>' +
+				'</h2>' +
+
+				'<div class=popUp id=popHelp style=display:none; ><p>Hi there!</p>Click the i-in-circle, info icon for latest updates.</div>' +
+
+				'<p>A very basic 3D globe with a displacement map material.</p>' +
+
+//				'<p><input type=checkbox id=onchange=controls.autoRotate=this.checked; checked > Auto-rotation</p>' +
+
+				getMenuDetailsSelectFile() +
+
+				getMenuDetailsFlights() +
+
+				'<div id=menuContents ></div>' +
+
+				'<div id=menuInfo ></div>' +
+
+				'<details>' +
+
+					'<summary><h3>about</h3></summary>' +
+
+					'<p>Copyright &copy; 2016 Jaanga authors. <a href=http://jaanga.github.io/home/r4/index.html#http://jaanga.github.io/jaanga-copyright-and-mit-license.md >MIT license</a>.</p>' +
+					'<p>Click the \'i in a circle\' icon for more <a href=index.html#readme.md title="Click here for help and information" >help</a>.</p>' +
+					'<p></p>' +
+				'</details>' +
+
+				'<hr>' +
+
+				'<center><a href=javascript:menu.scrollTop=0; style=text-decoration:none; onmouseover=pop2.style.display=""; onmouseout=pop2.style.display="none"; ><h1> &#x2766 <h1></a></center>' +
+				'<div class=popUp id=pop2 style=display:none;bottom:10px; >Jaanga - your 3D happy place.<br>Click here to return to the top of the page</div>' +
+
+//				'<center title="dingbat" ><h1><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > &#x2766 </a></h1></center>' +
+
+			'</div>' +
+
+			'<div id=hamburger onclick=container.style.left=container.style.left===""?"-325px":""; >' +
+				'<div id=bars title="Click this hamburger to slide the menu" > &#9776 </div>' +
+			'</div>' +
+
+		'';
+
+		if ( window.self !== window.top ) {
+
+			container.style.left = '-325px';
+
+		}
+
+		stats = new Stats();
+		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0;' ;
+		document.body.appendChild( stats.domElement );
+		stats.domElement.style.display = window.innerWidth < 500 ? 'none' : '';
+
+		window.addEventListener( 'resize', onWindowResize, false );
+		window.addEventListener( 'click', function() { controls.autoRotate = false; }, false );
+
+		renderer = new THREE.WebGLRenderer( {  alpha: 1, antialias: true }  );
+		renderer.setClearColor( 0x7ec0ee );
+//		renderer.setPixelRatio( window.devicePixelRatio );
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
+
+		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 40000 );
+		camera.position.set( 12000, 12000, 12000 );
+
+		controls = new THREE.OrbitControls( camera, renderer.domElement );
+		controls.maxDistance = 30000;
+		controls.autoRotate = true;
+
+		scene = new THREE.Scene();
+
+// helpers
+
+		axisHelper = new THREE.AxisHelper( 10000 );
+		scene.add( axisHelper );
+
+// assets
+
+		ambientLight = new THREE.AmbientLight( 0xffffff );
+		scene.add( ambientLight );
+
+		directionalLight = new THREE.DirectionalLight( 0x888888, 1 );
+		directionalLight.position.set( 1, 1, 1.6 ); // points to US
+		scene.add( directionalLight );
+
+		drawGlobe();
+
+		getGitHubAPITreeContents( );
+
+		initGetMeshLinesIntersection();
+
+	}
+
+
+	function getMenuDetailsSelectFile() {
+
+		menuDetailsSelectFile = 
+
+		'<details open >' +
+
+			'<summary><h3>Select file to view</h3></summary>' +
+			'<small>Select or open a file to view in 3D</small>' +
+			'<p>' +
+				'<select id=selFiles onchange=file=this.value;getCrossfeedData(file); size=12 style=width:100%;  ></select>' +
+			'</p>' +
+			'<p><input type=file id=inpFile onchange=getElevationsFileReader(this); /></p>' +
+
+			'<p><input type=checkbox id=chkRotate onchange=controls.autoRotate=chkRotate.checked; checked > Rotating</p>' +
+
+		'</details>' + 
+
+		b;
+
+		return menuDetailsSelectFile;
+
+	}
+
+
+	function getMenuDetailsFlights() {
+
+		menuDetailsFlightsStatistics =
+
+			'<details id=flightsStatistics open >' +
+
+				'<summary><h3>Flights Statistics</h3></summary>' +
+
+				'<p id=flightsStats ></p>' +
+
+				'<p id=flightData >When you click on a flight, position and altitude details appear here. Clicking on the line is tricky.</p>' +
+
+			'</details>' + 
+
+			'<details id=flightsCallSigns onclick=onClickCallSigns() >' +
+
+				'<summary><h3>Call Signs</h3></summary>' +
+
+				'<p id=pCallSigns ></p>' +
+
+			'</details>' + 
+
+			'<details id=flightsModels onclick=onClickModels() >' +
+
+				'<summary><h3>Models</h3></summary>' +
+
+				'<p id=pModels ></p>' +
+
+			'</details>' + 
+
+		b;
+
+		return menuDetailsFlightsStatistics;
+
+	}
+
+	function onClickModels() {
+
+		var keys, txt;
+
+		keys = Object.keys( models );
+
+		txt = '';
+
+		keys.sort();
+
+		for ( var i = 0; i < keys.length; i++ ) {
+
+			txt += keys[ i ] + ' FID count:' + models[ keys[ i ] ].fids.length + b;
+
+		}
+
+		pModels.innerHTML = txt
+
+	}
+
+
+	function onClickCallSigns() {
+
+		var keys, txt;
+
+		keys = Object.keys( callsigns );
+
+		txt = '';
+
+		keys.sort();
+
+		for ( var i = 0; i < keys.length; i++ ) {
+
+			txt += keys[ i ] + ' FID count:' + callsigns[ keys[ i ] ].fids.length + b;
+
+		}
+
+		pCallSigns.innerHTML = txt
+
+	}
+
+
+
+// GitHub API
+
+	function getGitHubAPITreeContents() {
+
+		var xhr, response, files, file;
+
+		xhr = new XMLHttpRequest();
+		xhr.open( 'GET', urlAPITreeContents, true );
+		xhr.onload = onLoadGitHubTreeContents;
+		xhr.send( null );
+
+		function onLoadGitHubTreeContents() {
+
+			response = JSON.parse( xhr.response );
+			files = [];
+
+			for ( var i = 0; i < response.tree.length; i++ ) {
+
+				file = response.tree[ i ].path;
+
+				if ( !file.match( '.csv' ) ) { continue; }
+
+				files.push( file );
+
+				selFiles[ selFiles.length ] = new Option( file, file );
+
+			}
+
+			selFiles.selectedIndex = selFiles.length - 1;
+
+			getCrossfeedData( selFiles.value );
+
+		}
+
+	}
+
+
+	function getCrossfeedData( fName) {
+
+		var text;
+
+		xhr = new XMLHttpRequest();
+		xhr.open( 'GET', baseURL + fName, true );
+		xhr.onload = callback;
+		xhr.send( null );
+
+		function callback() {
+
+			text = xhr.responseText;
+			lines = text.split( '\n' ).map( function( line ) { return line.split( ',' ); } );
+
+			addLines();
+
+		}
+
+	}
+
+
+	function addLines() {
+
+//		var fids, fid, line, obj, geometry, material;
+
+		scene.remove( flights );
+
+		fids = {};
+		callsigns = {};
+		models = {};
+
+		flights = new THREE.Object3D();
+
+		for ( var i = 1; i < lines.length; i++ ) {
+
+			line = lines[ i ];
+			fid = line[ 0 ];
+
+			if ( !fids[ fid ] ) { 
+
+				fids[ fid ] = {
+
+					callsign: line[ 1 ],
+					model: line[ 5 ],
+					coordinates: []
+
+				};
+
+			}
+
+			coordinates = convertPosition( parseFloat( line[ 2 ] ), parseFloat( line[ 3 ] ), radius + 1000 + 0.05 * parseFloat( line[ 4 ] ) );
+			fids[ fid ].coordinates.push( coordinates );
+
+		}
+
+
+		for ( fid in fids ) {
+
+			if ( !callsigns[ fids[ fid ].callsign ] ) { 
+
+				callsigns[ fids[ fid ].callsign ] = { fids: [] };
+
+			}
+
+			callsigns[ fids[ fid ].callsign ].fids.push( fid );
+
+
+			if ( !models[ fids[ fid ].model ] ) { 
+
+				models[ fids[ fid ].model ] = { fids: [] };
+
+			}
+
+			models[ fids[ fid ].model ].fids.push( fid );
+
+
+			geometry = new THREE.Geometry();
+			geometry.vertices = fids[ fid ].coordinates;
+			material = new THREE.LineBasicMaterial( { color: 0xffffff * Math.random() } );
+//			flightPath = new THREE.Line( geometry, material );
+
+			flightPath = getMeshLine( fids[ fid ].coordinates, 0xffffff * Math.random(), 50 );
+
+			p = fids[ fid ].coordinates[ 0 ];
+			placard = drawPlacard( [ fids[ fid ].callsign, fids[ fid ].model ], 5, 120, p.x, p.y, p.z );
+			placard.userData.fid = fids[ fid ];
+
+			placards.push( placard );
+
+			flightPath.add( placard );
+
+			flightPath.userData.fid = fids[ fid ];
+			flights.add( flightPath );
+
+		}
+
+		scene.add( flights );
+
+		var keys = Object.keys( fids ); 
+
+		flightsStats.innerHTML = 
+
+			'records: ' + lines.length.toLocaleString() + b +
+			'FIDs: ' + keys.length + b +
+
+		b;
+
+
+	}
+
+	function getMeshLine( points, color, width ) {
+
+		var geometry, line, material;
+
+		geometry = new THREE.Geometry();
+		line = new THREE.MeshLine();
+
+		geometry.vertices = points;
+
+		line.setGeometry( geometry );
+
+		material = new THREE.MeshLineMaterial( { color: new THREE.Color( color ), lineWidth: width });
+
+		return new THREE.Mesh( line.geometry, material );
+
+	}
+
+
+
+	function drawPlacard( text, scale, color, x, y, z ) {
+
+// 2016-02-27 ~ https://github.com/jaanga/jaanga.github.io/tree/master/cookbook-threejs/examples/placards
+
+		var placard = new THREE.Object3D();
+		var v = function( x, y, z ){ return new THREE.Vector3( x, y, z ); };
+
+		var texture = canvasMultilineText( text, { backgroundColor: color }   );
+		var spriteMaterial = new THREE.SpriteMaterial( { map: texture, opacity: 0.9, transparent: true } );
+		var sprite = new THREE.Sprite( spriteMaterial );
+		sprite.position.set( x, y, z ) ;
+		sprite.scale.set( scale * texture.image.width, scale * texture.image.height );
+
+		var geometry = new THREE.Geometry();
+		geometry.vertices = [ v( 0, 0, 0 ),  v( x, y, z ) ];
+		var material = new THREE.LineBasicMaterial( { color: 0xaaaaaa } );
+		var line = new THREE.Line( geometry, material );
+
+		placard.add( sprite, line );
+
+		return placard;
+
+
+		function canvasMultilineText( textArray, parameters ) {
+
+			var parameters = parameters || {} ;
+
+			var canvas = document.createElement( 'canvas' );
+			var context = canvas.getContext( '2d' );
+			var width = parameters.width ? parameters.width : 0;
+			var font = parameters.font ? parameters.font : '48px monospace';
+			var color = parameters.backgroundColor ? parameters.backgroundColor : 120 ;
+
+			if ( typeof textArray === 'string' ) textArray = [ textArray ];
+
+			context.font = font;
+
+			for ( var i = 0; i < textArray.length; i++) {
+
+				width = context.measureText( textArray[ i ] ).width > width ? context.measureText( textArray[ i ] ).width : width;
+
+			}
+
+			canvas.width = width + 20;
+			canvas.height =  parameters.height ? parameters.height : textArray.length * 60;
+
+			context.fillStyle = 'hsl( ' + color + ', 80%, 50% )' ;
+			context.fillRect( 0, 0, canvas.width, canvas.height);
+
+			context.lineWidth = 1 ;
+			context.strokeStyle = '#000';
+			context.strokeRect( 0, 0, canvas.width, canvas.height );
+
+			context.fillStyle = '#000' ;
+			context.font = font;
+
+			for ( i = 0; i < textArray.length; i++) {
+
+				context.fillText( textArray[ i ], 10, 48  + i * 60 );
+
+			}
+
+			var texture = new THREE.Texture( canvas );
+			texture.minFilter = texture.magFilter = THREE.NearestFilter;
+			texture.needsUpdate = true;
+
+			return texture;
+
+		}
+
+	}
+
+
+	function convertPosition( lat, lon, radius ) {
+
+		var rc = radius * Math.cos( lat * d2r );
+		return v( rc * Math.cos( - lon * d2r ), radius * Math.sin( lat * d2r ), rc * Math.sin( - lon * d2r) );
+
+	}
+
+
+	function onWindowResize() {
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize( window.innerWidth, window.innerHeight );
+
+		stats.domElement.style.display = window.innerWidth < 500 ? 'none' : '';
+
+	}
+
+	function animate() {
+
+		requestAnimationFrame( animate );
+		controls.update();
+		stats.update();
+		renderer.render( scene, camera );
+
+	}
+
+</script>
+</body>
+</html>

@@ -4,28 +4,6 @@
 	var mouse;
 	var particle;
 
-	function getMenuDetailsFlights() {
-
-		var particleMaterial;
-
-		menuDetailsAltitude =
-
-
-				'<details id=flightsStatistics open >' +
-
-					'<summary><h3>Flights Statistics</h3></summary>' +
-
-					'<p id=flightsStats ></p>' +
-					'<p id=flightData >When you click on a flight, position and altitude details appear here. Clicking on the line is tricky.</p>' +
-
-				'</details>' + 
-
-		b;
-
-		return menuDetailsAltitude;
-
-	}
-
 
 	function initGetMeshLinesIntersection() {
 
@@ -52,7 +30,7 @@
 
 	function onDocumentMouseDown( event ) {
 
-		var intersects, intersect, face, intersected;
+//		var intersects, intersect, face, intersected;
 
 		event.preventDefault();
 
@@ -67,17 +45,17 @@
 		raycaster.setFromCamera( mouse, camera );
 		raycaster.linePrecision = 5;
 
-		intersects = raycaster.intersectObjects( flights.children, true );
+		intersects = raycaster.intersectObjects( placards, true );
 
 		if ( intersects.length > 0 ) {
 
-console.log( '', event );
+//console.log( '', event );
 
 			intersect = intersects[ 0 ];
 //			face = intersect.face;
 //			intersected = intersect.object;
 
-console.log( 'interescts[0]', intersect );
+//console.log( 'interescts[0]', intersect );
 
 //			particle.position.copy( intersect.point );
 
@@ -85,9 +63,9 @@ console.log( 'interescts[0]', intersect );
 
 			flightData.innerHTML =
 
-				'callsign: ' + intersect.object.userData.fid.callsign + b +
-				'model: ' + intersect.object.userData.fid.model + b +
-				'waypoints: ' + intersect.object.userData.fid.coordinates.length + b +
+				'callsign: ' + intersect.object.parent.userData.fid.callsign + b +
+				'model: ' + intersect.object.parent.userData.fid.model + b +
+				'waypoints: ' + intersect.object.parent.userData.fid.coordinates.length + b +
 
 			b;
 
