@@ -38,7 +38,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 ## Issues
 
-* better placement of placars
+* better placement of placards
 
 
 ## Change Log
