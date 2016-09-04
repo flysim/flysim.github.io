@@ -92,10 +92,12 @@ _Globe Crossfeed Daily All Flights_
 
 All the flights that occurred on the selected day displayed all at once.
 
-## full screen: [Globe Crossfeed Daily All Flights]( https://flysim.github.io/globe-crossfeed-daily-replay/ )
 
 
-<img src="" style=display:none; width=800 >
+## full screen: [Globe Crossfeed Daily Replay]( https://flysim.github.io/globe-crossfeed-daily-replay/ )
+
+
+<img src="https://cloud.githubusercontent.com/assets/547626/18229175/05e1ea42-7223-11e6-97af-40adf68a42d6.png" style=display:none; width=800 >
 
 <iframe src=https://flysim.github.io/globe-crossfeed-daily-replay/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
 
@@ -108,10 +110,23 @@ A replay of the days flying activities.
 ## Links of Interest
 
 * https://fgx.github.io/crossfeed-dailies/html/20160829.htm#mod.time
+
+### locations for public announcements
+
+Possible locations for submitting notices of product updates
+
+* [Board index ‹ FlightGear ‹ Multiplayer events]( https://forum.flightgear.org/viewforum.php?f=10
+* http://wiki.flightgear.org/Links
+* https://www.reddit.com/r/flightsim/
+* http://www.avsim.com/
+* http://www.flightsim.com/
+
+
 ## Copyright and License
 
 * Copyright &copy; 2015 flySim authors
 * MIT license
+
 
 
 
