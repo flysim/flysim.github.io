@@ -26,14 +26,14 @@ The project will take time to create. In the meantime we will build applets that
 ### flySim unFlatland
 
 * Planar maps with 3D terrain
-* Display the vicinity of selectd airports
+* Display the vicinity of selected airports
 * Includes ILS, STAR and waypoints data
 * Historical data
 * Real-time data
 
 ### Standard Options
 
-* At least three versions -possibly more
+* All maps to have at least three versions - possibly more
 	* Historical data - all flights in a day
 	* Historical data - replay
 	* Real-time data
@@ -41,12 +41,17 @@ The project will take time to create. In the meantime we will build applets that
 	* Any latitude and longitude
 	* Select terrain to cover
 * Select choice of terrain and overlays
-	* Current versions having issues with terrain suppliers that do not support HTTPS. 
+	* Current versions having issues with terrain suppliers that do not support HTTPS
 	* Some suppliers may have to be dropped
+	* The terrain overlays involve many hundreds of bitmaps.
+		* The first time you load a map, the results may be incomplete. 
+		* Reloading the web page can really help
 * Import your CSV, or KML data
 	* Create, edit and share your own flight paths
-* First person controls
-	* Fly your own models
+* Multiple types of camera actions
+	* First person controls
+		* Enable you to fly your own models
+	* Other camera actions control the view you view replays
 * Select choice of aircraft models
 	* From FGx aircraft
 	* Others?
@@ -56,6 +61,9 @@ The project will take time to create. In the meantime we will build applets that
 	* Current versions include a ghostly heading or bearing indicator at top right of screen
 	* North is toward the top of the screen
 	* Roll, pitch and yaw to be added
+* All code is written beginner to middle level coding skills 
+	* All pure JavaScript
+	* Embeds easily into your existing templates
 
 
 ## Mission
