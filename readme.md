@@ -1,10 +1,10 @@
 <span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]
-( https://flysim.github.io/#readme.md "View file as a web page." ) </span>
-<input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/'; 
+( http://flysim.github.io/#readme.md "View file as a web page." ) </span>
+<input type=button onclick=window.location.href='http://github.com/flysim/flysim.github.io/tree/master/'; 
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' >
 
 
-[flySim Read Me]( https://flysim.github.io/#readme.md )
+[flySim Read Me]( http://flysim.github.io/#readme.md )
 ===
 
 ## Concept
@@ -90,12 +90,12 @@ A place for:
 * Hazuki Amamiya for [FlightGear Tracker]( http://mpserver15.flightgear.org/modules/fgtracker/ )
 
 
-## full screen: [Globe Crossfeed Inflight]( https://flysim.github.io/globe-crossfeed-inflight/ )
+## full screen: [Globe Crossfeed Inflight]( http://flysim.github.io/globe-crossfeed-inflight/ )
 
 
 <img src="" style=display:none; width=800 >
 
-<iframe src=https://flysim.github.io/globe-crossfeed-inflight/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
+<iframe src=http://flysim.github.io/globe-crossfeed-inflight/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
 
 _Globe Crossfeed Inflight_
 
