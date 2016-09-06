@@ -89,6 +89,20 @@ A place for:
 * @Peteffs for [Free Flight Sim]( https://github.com/freeflightsim )
 * Hazuki Amamiya for [FlightGear Tracker]( http://mpserver15.flightgear.org/modules/fgtracker/ )
 
+
+## full screen: [Globe Crossfeed Inflight]( https://flysim.github.io/globe-crossfeed-daily-inflight/ )
+
+
+<img src="" style=display:none; width=800 >
+
+<iframe src=https://flysim.github.io/globe-crossfeed-daily-inflight/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
+
+_Globe Crossfeed Daily Inflight_
+
+The aircraft flying right now
+
+
+
 ## full screen: [Globe Crossfeed Daily All Flights]( https://flysim.github.io/globe-crossfeed-daily-all-flights/ )
 
 
