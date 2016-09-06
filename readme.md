@@ -90,12 +90,12 @@ A place for:
 * Hazuki Amamiya for [FlightGear Tracker]( http://mpserver15.flightgear.org/modules/fgtracker/ )
 
 
-## full screen: [Globe Crossfeed Inflight]( https://flysim.github.io/globe-crossfeed-daily-inflight/ )
+## full screen: [Globe Crossfeed Inflight]( https://flysim.github.io/globe-crossfeed-inflight/ )
 
 
 <img src="" style=display:none; width=800 >
 
-<iframe src=https://flysim.github.io/globe-crossfeed-daily-inflight/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
+<iframe src=https://flysim.github.io/globe-crossfeed-inflight/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
 
 _Globe Crossfeed Daily Inflight_
 
@@ -108,7 +108,7 @@ The aircraft flying right now
 
 <img src="https://cloud.githubusercontent.com/assets/547626/18041644/ee0df882-6d6f-11e6-8592-d62439c5bf36.png" style=display:none; width=800 >
 
-<iframe src=https://flysim.github.io/globe-crossfeed-daily-all-flights/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
+<iframe src=http://flysim.github.io/globe-crossfeed-daily-all-flights/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
 
 _Globe Crossfeed Daily All Flights_
 
