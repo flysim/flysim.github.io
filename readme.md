@@ -97,7 +97,7 @@ A place for:
 
 <iframe src=https://flysim.github.io/globe-crossfeed-inflight/ width=100% height=600px onload=this.contentWindow.controls.enableZoom=false; ></iframe>
 
-_Globe Crossfeed Daily Inflight_
+_Globe Crossfeed Inflight_
 
 The aircraft flying right now
 

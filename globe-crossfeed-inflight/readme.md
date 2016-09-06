@@ -1,18 +1,18 @@
 <span style=display:none; >[You are now in a GitHub source code view - click this link to view the home page]
-( http://flysim.github.io/sandbox/globe-crossfeed-inflight/#readme.md "View file as a web page." )</span>
-<input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/sandbox/globe-crossfeed-inflight/'; 
+( http://flysim.github.io/globe-crossfeed-inflight/#readme.md "View file as a web page." )</span>
+<input type=button onclick=window.location.href='https://github.com/flysim/flysim.github.io/tree/master/globe-crossfeed-inflight/'; 
 value='You are now in the home page view - Click this button to view the read me file and the source code' >
 
 [flySim]( https://flysim.github.io ) &raquo; [Sandbox]( http://flysim.github.io/sandbox/  ) &raquo;
 
-[flySim Globe Crossfeed Inflight Read Me]( http://flysim.github.io/sandbox/globe-crossfeed-inflight/index.html#readme.md )
+[flySim Globe Crossfeed Inflight Read Me]( http://flysim.github.io/globe-crossfeed-inflight/index.html#readme.md )
 ===
 
-## Full Screen: [ flySim Globe Crossfeed Dailies inflight ]( http://flysim.github.io/sandbox/globe-crossfeed-inflight/ )
+## Full Screen: [ flySim Globe Crossfeed Inflight ]( http://flysim.github.io/globe-crossfeed-inflight/ )
 
-<img src="https://cloud.githubusercontent.com/assets/547626/17286812/ae71758c-5780-11e6-91db-f802ea769ab5.png" style=display:none; width=800 >
+<img src="http://cloud.githubusercontent.com/assets/547626/17286812/ae71758c-5780-11e6-91db-f802ea769ab5.png" style=display:none; width=800 >
 
-<iframe src=http://flysim.github.io/sandbox/globe-crossfeed-inflight/index.html width=100% height=500px ></iframe>
+<iframe src=http://flysim.github.io/globe-crossfeed-inflight/index.html width=100% height=500px ></iframe>
 
 _flySim Globe Crossfeed Inflight_
 
